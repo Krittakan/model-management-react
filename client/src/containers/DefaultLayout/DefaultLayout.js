@@ -17,7 +17,6 @@ import {
 } from '@coreui/react';
 // sidebar nav config
 import navigation from '../../_nav';
-import navigationFronend from '../../_navFrontEnd';
 // routes config
 import routes from '../../routes';
 
@@ -34,13 +33,6 @@ class DefaultLayout extends Component {
     this.props.history.push('/login')
   }
 
-  nav() {
-    if (this.props.location.pathname.includes("/backend/")) {
-      return <AppSidebarNav navConfig={navigation} {...this.props} router={router} />;
-    }
-    
-    return <AppSidebarNav navConfig={navigationFronend} {...this.props} router={router} />;
-  }
   render() {
     return (
       <div className="app">
@@ -54,7 +46,7 @@ class DefaultLayout extends Component {
             <AppSidebarHeader />
             <AppSidebarForm />
             <Suspense>
-              {this.nav()}
+            <AppSidebarNav navConfig={navigation} {...this.props} router={router} />
             </Suspense>
             <AppSidebarFooter />
             <AppSidebarMinimizer />
@@ -76,7 +68,7 @@ class DefaultLayout extends Component {
                         )} />
                     ) : (null);
                   })}
-                  <Redirect from="/" to="/backend/dashboard" />
+                  <Redirect from="/" to="/dashboard" />
                 </Switch>
               </Suspense>
             </Container>

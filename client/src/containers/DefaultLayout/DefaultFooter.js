@@ -15,7 +15,7 @@ class DefaultFooter extends Component {
 
     return (
       <React.Fragment>
-        <span>© 2020 Office of Educational Administration, KASETSART UNIVERSITY. All rights reserved</span>
+        <span>© 2020 TBA</span>
       </React.Fragment>
     );
   }
