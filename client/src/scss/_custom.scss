@@ -1,0 +1,190 @@
+// Here you can add other styles
+@font-face {
+  font-family: 'DB Ozone X';
+	src: url('./assets/fonts/kuttf/DB Ozone X.ttf') format('truetype');
+}
+body {
+	margin: 0;
+	font-family: "DB Ozone X", Arial, sans-serif;
+	font-size: 18.5px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #23282c;
+	text-align: left;
+	background-color: #e4e5e6;
+}
+
+.app-header {
+	height: 120px;
+}
+@media (max-width: 991.98px){
+	.header-fixed .nav {
+		margin-top: 65px;
+	}
+	.app-header .navbar-brand {
+			position: absolute;
+			top: auto;
+			left: 50%;
+			margin-left: -77.5px;
+	}
+
+	tr {
+		display: grid;
+		grid-template-columns: 50px auto auto auto;
+		border: 1px solid #000;
+		border-radius: 30px;
+		margin: 1rem;
+	}
+
+	thead {
+		display: none;
+	}
+
+	td {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: fit-content;
+		width: 100%;
+		margin: auto;
+		border: none !important;
+	}
+	
+	tr:nth-child(odd) .bg-td-striped {
+		background-clip: content-box;
+		background-color: #fff;
+	}
+
+	tr:nth-child(even) .bg-td-striped {
+		background-clip: content-box;
+		background-color: rgba(0,0,0,0.05);
+	}
+	
+	.result-number {
+		grid-row-start: 1;
+		grid-row-end: 10;
+	}
+}
+@media (min-width: 992px)
+{
+	.header-fixed .app-body {
+		margin-top: 120px;
+	}
+	.sidebar-fixed .app-header + .app-body .sidebar {
+		height: calc(100vh - 120px);
+	}
+}
+.app-header .nav-item .nav-link > .img-avatar, .app-header .nav-item .avatar.nav-link > img {
+	height: 45px;
+	margin: 0 10px;
+}
+
+.ku-border{
+	border-bottom: solid 2px #B2BB1E;
+}
+.ku-border02{
+	border-bottom: solid 2px #006664;
+}
+.ku-tb-head{
+	background-color: #006664;
+	color: #fefefe;
+}
+.ku-tb-head2{
+	background-color: #B2BB1E;
+}
+.ku-pagination{
+	.page-item{
+		&.active{
+			.page-link{
+				z-index: 1;
+				color: #fefefe !important;
+				background-color: #006664 !important;
+				border-color: #006664 !important;
+			}
+		}
+	}
+	.page-link{
+		color: #006664 !important;
+	}
+}
+
+.form-control {
+	height: calc(1em + 0.75rem + 2px);
+	padding: 0.1rem 0.375rem;
+	font-size: 1rem;
+}
+.btn {
+	font-size: 1rem;
+}
+.btn-sm.ku-tb-action {
+	padding: 0.1rem 0.375rem;
+}
+.btn-sm.ku-tb-action02 {
+	padding: 0.05rem 0.375rem;
+}
+.bg-ku-primary01{
+	background-color: #006664 !important;
+}
+.bg-ku-primary01 label{
+	margin-bottom: 0;
+	font-weight: bold;
+	// font-size: 18.5px;
+}
+.bg-ku-primary01-light{
+	background-color: #d6f7f6 !important;
+}
+.bg-ku-primary02{
+	background-color: #B2BB1E !important;
+}
+.bg-ku-primary03{
+	background-color: #6E4B32 !important;
+}
+.txt-ku-primary04{
+	background-color: #FFD800 !important;
+}
+.txt-ku-primary01{
+	color: #006664 !important;
+}
+.txt-ku-primary02{
+	color: #B2BB1E !important;
+}
+.txt-ku-primary03{
+	color: #6E4B32 !important;
+}
+.txt-ku-primary04{
+	color: #FFD800 !important;
+}
+.ku-pd05{
+	padding: 0.5rem;
+}
+.ku-lh2rem{
+	line-height: 2rem;
+}
+
+.ku-mw100px{
+	min-width: 100px;
+}
+
+.ql-editor{
+	min-height: 200px;
+}
+
+.dropzone {
+	flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-width: 2px;
+    border-radius: 2px;
+    border-color: #eeeeee;
+    border-style: dashed;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    outline: none;
+    transition: border .24s ease-in-out;
+}
+
+.nav-dropdown-items .nav-item .nav-link {
+	padding-left: 2rem;
+}

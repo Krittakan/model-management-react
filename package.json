@@ -1,0 +1,27 @@
+{
+  "name": "ku-ods",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "node start-client.js",
+    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^6.12.2",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-json-validator-middleware": "^2.1.1",
+    "express-jsonschema": "^1.1.6",
+    "pg": "^8.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "3.1.0"
+  }
+}
