@@ -1,0 +1,50 @@
+[
+    {
+        "align": "center",
+        "width": "50px",
+        "name": "#",
+        "field": "#",
+        "conditionfield": "#",
+        "sorting": "false"
+    },
+    {
+        "align": "center",
+        "width": "200px",
+        "name": "Create Date",
+        "field": "createDateStr",
+        "conditionfield": "`createDate`",
+        "sorting": "true"
+    },
+    {
+        "align": "center",
+        "width": "200px",
+        "name": "Title",
+        "field": "title",
+        "conditionfield": "`title`",
+        "sorting": "true"
+    },
+    {
+        "align": "center",
+        "width": "200px",
+        "name": "Description",
+        "field": "description",
+        "conditionfield": "`description`",
+        "sorting": "true"
+    },
+    {
+        "align": "center",
+        "width": "200px",
+        "name": "Detail",
+        "field": "detail",
+        "conditionfield": "",
+        "sorting": "false"
+    },
+    {
+        "align": "center",
+        "width": "200px",
+        "name": "Delete",
+        "field": "delete",
+        "conditionfield": "",
+        "sorting": "false"
+    }
+]

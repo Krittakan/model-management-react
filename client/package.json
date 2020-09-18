@@ -29,6 +29,7 @@
     "jquery": "^3.5.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
+    "rc-datepicker": "^5.0.16",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
     "react-chartjs-2": "^2.7.6",

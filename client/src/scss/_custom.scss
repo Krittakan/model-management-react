@@ -1,0 +1,41 @@
+.table-searching{
+    display: block;
+    z-index: 90;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: rgba(42, 42, 42, 0.7);
+    margin-left: auto;
+    margin-right: auto;
+}
+.table-searching label{
+    position: absolute;
+    color: #fefefe;
+    top: 50%;
+    left: 45%;
+}
+.react-datepicker-component .react-datepicker-input,
+.react-datepicker-component .react-datepicker-input:hover,
+.react-datepicker-component .react-datepicker-input:focus {
+    position: relative;
+    min-width: 150px;
+    height: calc(1em + 0.95rem + 4px);;
+    background: #fff; 
+    border: 1px solid #ced0da;
+    border-radius: 4px;
+}
+.react-datepicker-component .react-datepicker-input input {
+    width: 100%;
+    height: calc(1em + 0.95rem + 2px);
+    padding: 0.1rem 0.375rem;
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    font-weight: normal;
+}
