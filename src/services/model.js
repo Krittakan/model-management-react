@@ -3,11 +3,11 @@ const db = require('./database');
 const fs = require('fs');
 
 class model {
-    async getListModel(params) {
+    async getList(params) {
         try {
             let getListIdSql = fs.readFileSync('./src/sql/model/getListId.sql', 'utf8');
 
-            let getSql = fs.readFileSync('./src/sql/model/getList.sql', 'utf8');
+            let getListSql = fs.readFileSync('./src/sql/model/getList.sql', 'utf8');
 
             let order_by = " order by `createDate` DESC, `id`  DESC";
             let row_num = "`createDate` DESC, `id`  DESC";
@@ -17,8 +17,8 @@ class model {
             }
 
             let offset = ((params.page - 1) * params.limit);
-            getSql = getSql.replace("{{OFFSET}}", offset);
-            getSql = getSql.replace("{{ROW_NUMBER}}", row_num);
+            getListSql = getListSql.replace("{{OFFSET}}", offset);
+            getListSql = getListSql.replace("{{ROW_NUMBER}}", row_num);
 
             let whereCause = [];
             if (params.criteria.keywords) {
@@ -42,21 +42,39 @@ class model {
 
             var notiId = idRows.slice(offset, offset + params.limit).map(obj => obj.id);
 
-            const [listRows, listFields] = await db.query(getSql + where + order_by, [notiId]);
+            const [listRows, listFields] = await db.query(getListSql + where + order_by, [notiId]);
 
             if (idRows.length <= 0) {
                 return {
                     rowCount: 0,
-                    count: 0,
                     rows: []
                 };
             }
 
             return {
                 rowCount: idRows.length,
-                count: idRows.length,
                 rows: listRows
             };
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async insert(title, description, androidFile, iosFile, user) {
+        try {
+            let insertSql = fs.readFileSync('./src/sql/model/insert.sql', 'utf8');
+
+            const insertResult = await db.query(insertSql,
+                [
+                    title,
+                    description,
+                    androidFile,
+                    iosFile,
+                    user,
+                    user
+                ]);
+
+            return insertResult;
         } catch (error) {
             throw error;
         }

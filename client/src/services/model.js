@@ -20,35 +20,25 @@ export default class announcement {
 			});
 	}
 
-	createAnnouncement(inputs) {
+	create(inputs) {
 		let formData = new FormData();
-		formData.append('group', inputs.group);
-		if (inputs.email !== "" && inputs.emailCsv === "") {
-			formData.append('email', inputs.email);
-		} else if (inputs.email === "" && inputs.emailCsv !== "") {
-			formData.append('email', inputs.emailCsv);
-		} else if (inputs.email !== "" && inputs.emailCsv !== "") {
-			formData.append('email', inputs.email + "|" + inputs.emailCsv);
-		}
-		formData.append('newsGroup', inputs.newsGroup);
 		formData.append('title', inputs.title);
-		formData.append('detail', inputs.detail);
-		formData.append('detailShortStr', this.component.quillRef.current.getEditor().getText().substring(0, 1024));
-		formData.append('priority', inputs.priority);
-		formData.append('action', inputs.action);
-		formData.append('immediatelyStatus', inputs.immediatelyStatus);
-		if (inputs.immediatelyStatus === 0) {
-			formData.append('schedule', inputs.scheduleDate + ' ' + inputs.scheduleTime);
-		}
+		formData.append('description', inputs.description);
+		inputs.androidFile.map((file) => {
+			return formData.append('androidFile', file);
+		});
+		inputs.iosFile.map((file) => {
+			return formData.append('iosFile', file);
+		});
 
 		axios
-			.post('/api/announcement/create', formData, {
+			.post('/api/model/add', formData, {
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				}
 			})
 			.then(res => {
-				window.location.href = "/announcements";
+				// window.location.href = "/model";
 			});
 	}
 

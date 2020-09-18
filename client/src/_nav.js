@@ -1,13 +1,13 @@
 const backendNav = {
   items: [
     {
-      name: 'Model',
-      url: '/model',
+      name: 'Dashboard',
+      url: '/dashboard',
       icon: 'fa fa-star'
     },
     {
-      name: 'Dashboard',
-      url: '/dashboard',
+      name: 'Model',
+      url: '/model',
       icon: 'fa fa-star'
     },
   ]

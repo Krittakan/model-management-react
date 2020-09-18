@@ -15,11 +15,9 @@ class AppTable extends Component {
 	constructor(props) {
 		super(props);
 		let w = this.props.columns.map(t => (Number(t.width.replace("px", "").replace("%", "")) === 0 ? 100 : Number(t.width.replace("px", "").replace("%", ""))));
-		//console.log(window.innerWidth - 260);
 		var sum = w.reduce(function (a, b) {
 			return a + b;
 		}, 0);
-		// console.log((sum / (window.innerWidth)) * 100);
 		let tbw = (sum / (window.innerWidth)) * 100 < 100 ? 100 : (sum / (window.innerWidth)) * 100;
 		this.state = {
 			dataLoaded: false,
@@ -57,7 +55,7 @@ class AppTable extends Component {
 		});
 
 		this.service(searchParams, (response) => {
-			let pageCount = response.data.count === 0 ? 0 : Math.ceil(parseInt(response.data.count) / self.state.limit);
+			let pageCount = response.data.rowCount === 0 ? 0 : Math.ceil(parseInt(response.data.rowCount) / self.state.limit);
 			self.setState({
 				dataLoaded: true,
 				dataLoading: false,

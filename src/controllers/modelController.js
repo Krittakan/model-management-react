@@ -9,7 +9,7 @@ const db = require('../services/database');
 const getListModel = async (req, res, next) => {
     const modelService = new model();
     try {
-        const modelListResult = await modelService.getListModel(req.body);
+        const modelListResult = await modelService.getList(req.body);
 
         res.send(modelListResult);
     } catch (error) {
@@ -18,8 +18,19 @@ const getListModel = async (req, res, next) => {
 }
 
 
-const createModel = async (req, res, next) => {
+const addModel = async (req, res, next) => {
+    const modelService = new model();
     try {
+        const insertModelResult = await modelService.insert(
+            req.body.title,
+            req.body.description,
+            req.files[0].filename,
+            req.files.length > 1 ? req.files[1].filename : null,
+            "test"
+        );
+
+        console.log(insertModelResult);
+
         res.send("Created");
     } catch (error) {
         next(error);
@@ -44,4 +55,4 @@ const deleteModel = async (req, res, next) => {
     }
 }
 
-module.exports = { getListModel, createModel, detailModel, deleteModel };
+module.exports = { getListModel, addModel, detailModel, deleteModel };
