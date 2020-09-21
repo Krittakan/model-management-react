@@ -29,8 +29,6 @@ const addModel = async (req, res, next) => {
             "test"
         );
 
-        console.log(insertModelResult);
-
         res.send("Created");
     } catch (error) {
         next(error);
@@ -39,8 +37,32 @@ const addModel = async (req, res, next) => {
 
 const detailModel = async (req, res, next) => {
     const modelId = req.params.id;
+    const modelService = new model();
     try {
-        res.send("Detail");
+        const modelRows = await modelService.getModelFromId(modelId);
+
+        if (modelRows.length <= 0) {
+            next(error);
+        }
+
+        res.send(modelRows[0]);
+    } catch (error) {
+        next(error);
+    }
+}
+
+const getAndroidFilelModel = async (req, res, next) => {
+    const modelId = req.params.id;
+    const modelService = new model();
+    try {
+        const modelRows = await modelService.getModelFromId(modelId);
+
+        if (modelRows.length <= 0) {
+            next(error);
+        }
+
+        const file =  "./uploads/model/androidFile/test/" + modelRows[0].androidFile;
+        res.download(file);
     } catch (error) {
         next(error);
     }
@@ -55,4 +77,4 @@ const deleteModel = async (req, res, next) => {
     }
 }
 
-module.exports = { getListModel, addModel, detailModel, deleteModel };
+module.exports = { getListModel, addModel, detailModel, getAndroidFilelModel, deleteModel };

@@ -79,6 +79,18 @@ class model {
             throw error;
         }
     }
+
+    async getModelFromId(id) {
+        try {
+            let getModelSql = fs.readFileSync('./src/sql/model/getModelFromId.sql', 'utf8');
+
+            const [getModelRows, getModelFields] = await db.query(getModelSql, [id]);
+
+            return getModelRows;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = model;

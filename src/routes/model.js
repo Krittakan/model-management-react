@@ -34,6 +34,12 @@ router.get(
 );
 
 router.get(
+    '/model/androidFile/:id',
+    controller.getAndroidFilelModel
+);
+
+
+router.get(
     '/model/delete/:id',
     controller.deleteModel
 );

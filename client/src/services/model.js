@@ -13,7 +13,6 @@ export default class announcement {
 					callback(response);
 				}
 			}).catch((err) => {
-				console.log(err);
 				if (errCallback) {
 					errCallback();
 				}
@@ -38,78 +37,32 @@ export default class announcement {
 				}
 			})
 			.then(res => {
-				// window.location.href = "/model";
+				window.location.href = "/model";
 			});
 	}
 
-	getData(id) {
+	getDetail(id) {
 		axios
-			.get('/api/announcement/' + id)
+			.get('/api/model/' + id)
 			.then(res => {
 				let inputs = this.component.state.inputs;
-				inputs["group"] = res.data.group;
-				inputs["email"] = res.data.persons.join("|");
-				inputs["newsGroup"] = res.data.newsGroup;
-				inputs["title"] = res.data.announcement.title;
-				inputs["detail"] = res.data.announcement.detail;
-				inputs["priority"] = res.data.announcement.priority;
-				inputs["action"] = res.data.announcement.action;
-				inputs["immediatelyStatus"] = res.data.announcement.immediatelyStatus;
-				if (res.data.announcement.immediatelyStatus === 0) {
-					inputs["scheduleDate"] = res.data.announcement.announceDate;
-					inputs["scheduleTime"] = res.data.announcement.announceTime;
-				}
-				this.component.setState({
-					inputs: inputs
-				});
+				inputs["title"] = res.data.title;
+				inputs["description"] = res.data.description;
 
-				this.component.masterService.getForAnnounceScreen();
+				this.component.setState({
+					inputs: inputs,
+					dataLoaded: true
+				});
 			}).catch(e => {
-				window.location.href = "/announcements";
+				window.location.href = "/model";
 			});
 	}
 
 	DeleteAnnouncement(id) {
 		axios
-			.get('/api/announcement/delete/' + id)
+			.get('/api/model/delete/' + id)
 			.then(res => {
-				window.location.href = "/announcements";
-			});
-	}
-
-	EditAnnouncement(inputs, id) {
-		let formData = new FormData();
-		formData.append('group', inputs.group);
-		if (inputs.email !== "" && inputs.emailCsv === "") {
-			formData.append('email', inputs.email);
-		} else if (inputs.email === "" && inputs.emailCsv !== "") {
-			formData.append('email', inputs.emailCsv);
-		} else if (inputs.email !== "" && inputs.emailCsv !== "") {
-			formData.append('email', inputs.email + "|" + inputs.emailCsv);
-		}
-		formData.append('newsGroup', inputs.newsGroup);
-		formData.append('title', inputs.title);
-		formData.append('detail', inputs.detail);
-		formData.append('detailShortStr', this.component.quillRef.current.getEditor().getText().substring(0, 1024));
-		formData.append('priority', inputs.priority);
-		formData.append('action', inputs.action);
-		formData.append('immediatelyStatus', inputs.immediatelyStatus);
-		if (inputs.immediatelyStatus === 0) {
-			formData.append('schedule', inputs.scheduleDate + ' ' + inputs.scheduleTime);
-		}
-
-		axios
-			.post('/api/announcement/edit/' + id, formData, {
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-				}
-			})
-			.then(res => {
-				window.location.href = "/announcements";
-			}).catch(e => {
-				this.component.setState({
-					dataSending: false
-				});
+				window.location.href = "/model";
 			});
 	}
 }
