@@ -7,7 +7,7 @@
   "copyright": "Copyright 2017-2019 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:14027/",
   "repository": {
     "type": "git",
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
