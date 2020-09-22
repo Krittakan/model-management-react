@@ -58,7 +58,7 @@ export default class announcement {
 			});
 	}
 
-	DeleteAnnouncement(id) {
+	DeleteModel(id) {
 		axios
 			.get('/api/model/delete/' + id)
 			.then(res => {

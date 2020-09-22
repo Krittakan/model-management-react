@@ -70,7 +70,13 @@ const getAndroidFilelModel = async (req, res, next) => {
 
 const deleteModel = async (req, res, next) => {
     const modelId = req.params.id;
+    const modelService = new model();
     try {
+        const deleteModelResult = await modelService.delete(
+            modelId,
+            "test"
+        );
+
         res.send("Deleted");
     } catch (error) {
         next(error);

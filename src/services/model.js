@@ -91,6 +91,22 @@ class model {
             throw error;
         }
     }
+
+    async delete(id, user) {
+        try {
+            let deleteModelSql = fs.readFileSync('./src/sql/model/deleteModel.sql', 'utf8');
+
+            const [getModelRows, getModelFields] = await db.query(deleteModelSql,
+                [
+                    user,
+                    id
+                ]);
+
+            return getModelRows;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = model;
