@@ -42,7 +42,7 @@ class model {
 
             var notiId = idRows.slice(offset, offset + params.limit).map(obj => obj.id);
 
-            const [listRows, listFields] = await db.query(getListSql + where + order_by, [notiId]);
+            const [listRows, listFields] = await db.query(getListSql + where + order_by, [notiId.length === 0 ? null : notiId]);
 
             if (idRows.length <= 0) {
                 return {

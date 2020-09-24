@@ -54,7 +54,7 @@ class AnnouncementDetail extends Component {
                                     <Row className="align-items-center">
                                         <Col md="3" className="mr-auto ml-auto order-md-1">
                                             <Link to="/model" className="text-decoration-none">
-                                                <Button block color="danger" className="font-weight-bold">ย้อนกลับ</Button>
+                                                <Button block color="danger" className="font-weight-bold">Back</Button>
                                             </Link>
                                         </Col>
                                     </Row>
