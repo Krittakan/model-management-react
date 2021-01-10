@@ -2,12 +2,12 @@
   "name": "model-management",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server.js",
-    "client": "node start-client.js",
-    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1"
+    "client": "node start-client.js"
   },
   "author": "",
   "license": "ISC",
@@ -27,9 +27,7 @@
     "pg": "^8.3.3",
     "rotating-file-stream": "^2.1.3",
     "winston": "^3.3.3",
-    "winston-daily-rotate-file": "^4.5.0"
-  },
-  "devDependencies": {
+    "winston-daily-rotate-file": "^4.5.0",
     "concurrently": "3.1.0"
   }
 }

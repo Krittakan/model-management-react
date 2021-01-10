@@ -43,13 +43,10 @@ var wLogger = createLogger({
 		dailyRotateFileTransport
 	]
 });
-// -------------------
-
-app.set("port", process.env.PORT);
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static("client/build"));
+	app.use(express.static(path.join(__dirname, 'client/build')));
 	// setup the logger
 	app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
 		, {
@@ -66,6 +63,13 @@ app.use(bodyParser.json());
 var modelRoute = require('./src/routes/model');
 
 app.use('/api/', modelRoute);
+
+
+if (process.env.NODE_ENV === "production") {
+	app.use('*', function (request, response) {
+		response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+	});
+}
 
 // Error handler for valication errors
 var resError = require('./src/models/resError');
@@ -89,7 +93,8 @@ app.use(async function (err, req, res, next) {
 	};
 });
 
-app.listen(app.get("port"), () => {
-	console.log(`NODE_ENV : ${process.env.NODE_ENV}`);
-	console.log(`Find the server at: http://localhost:${app.get("port")}/`);
-});
+const port = process.env.PORT || 3001;
+app.listen(port);
+
+console.log(`NODE_ENV : ${process.env.NODE_ENV}`);
+console.log(`Find the server at: http://localhost:${port}/`);
